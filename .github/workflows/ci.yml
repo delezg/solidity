@@ -7,8 +7,6 @@ jobs:
     runs-on: windows-latest
 
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v2
 
     - name: Compile contracts
       run: |
