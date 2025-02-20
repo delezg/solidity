@@ -20,14 +20,15 @@ jobs:
 
     - name: Compile contracts
       run: |
-        mkdir -p build
+        mkdir build
         npx solc --bin --abi --include-path node_modules/ --base-path . -o build contracts/HolaMundo.sol
 
     - name: List build directory
-      run: ls -l build
+      run: dir build
 
     - name: Verify ABI file
-      run: test -f build/HolaMundo_sol_HolaMundo.abi
+      run: if exist build\HolaMundo_sol_HolaMundo.abi (echo ABI file exists) else (echo ABI file does not exist & exit 1)
 
     - name: Verify BIN file
-      run: test -f build/HolaMundo_sol_HolaMundo.bin
+      run: if exist build\HolaMundo_sol_HolaMundo.bin (echo BIN file exists) else (echo BIN file does not exist & exit 1)
+      
