@@ -1,4 +1,4 @@
-name: Compile Solidity Contracts
+name: Compilando mi Smart Contracts
 
 on: [push, pull_request]
 
@@ -27,8 +27,19 @@ jobs:
       run: dir build
 
     - name: Verify ABI file
-      run: if exist build\HolaMundo_sol_HolaMundo.abi (echo ABI file exists) else (echo ABI file does not exist & exit 1)
+      run: |
+        if (Test-Path build\HolaMundo_sol_HolaMundo.abi) {
+          Write-Output "ABI file exists"
+        } else {
+          Write-Output "ABI file does not exist"
+          exit 1
+        }
 
     - name: Verify BIN file
-      run: if exist build\HolaMundo_sol_HolaMundo.bin (echo BIN file exists) else (echo BIN file does not exist & exit 1)
-      
+      run: |
+        if (Test-Path build\HolaMundo_sol_HolaMundo.bin) {
+          Write-Output "BIN file exists"
+        } else {
+          Write-Output "BIN file does not exist"
+          exit 1
+        }
