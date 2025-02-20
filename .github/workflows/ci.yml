@@ -1,4 +1,4 @@
-name: Compilando mi Smart Contracts
+name: Compilando el smart contracts
 
 on: [push, pull_request]
 
@@ -17,6 +17,15 @@ jobs:
 
     - name: Install dependencies
       run: npm install solc
+
+    - name: Verify contract file exists
+      run: |
+        if (Test-Path contracts\HolaMundo.sol) {
+          Write-Output "Contract file exists"
+        } else {
+          Write-Output "Contract file does not exist"
+          exit 1
+        }
 
     - name: Compile contracts
       run: |
