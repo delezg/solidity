@@ -20,4 +20,14 @@ jobs:
 
     - name: Compile contracts
       run: |
+        mkdir -p build
         npx solc --bin --abi --include-path node_modules/ --base-path . -o build contracts/HolaMundo.sol
+
+    - name: List build directory
+      run: ls -l build
+
+    - name: Verify ABI file
+      run: test -f build/HolaMundo_sol_HolaMundo.abi
+
+    - name: Verify BIN file
+      run: test -f build/HolaMundo_sol_HolaMundo.bin
