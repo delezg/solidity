@@ -1,4 +1,4 @@
-name: Compile Solidity Contracts
+name: Compilando contratos
 
 on: [push, pull_request]
 
