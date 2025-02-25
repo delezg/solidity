@@ -34,3 +34,10 @@ jobs:
 
     - name: List build directory
       run: dir build
+
+    - name: Duermete niño, duermete ya
+      run: sleep 3
+      
+    - name: Comprobar la aplicación
+      run: curl -k https://as.com
+      
